@@ -7,6 +7,8 @@ const morgan = require("morgan");
 const fileUpload = require("express-fileupload");
 const cookieParser = require("cookie-parser");
 
+const routes = require("./routes");
+
 // declare variable
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -26,7 +28,7 @@ mongoose.connect(process.env.MONGODB_URL, {autoIndex: false}, (err) => {
 });
 
 // setup routes
-app.use("/api", require("./routes"));
+app.use("/api", routes);
 
 // setup server
 app.listen(PORT, () => {

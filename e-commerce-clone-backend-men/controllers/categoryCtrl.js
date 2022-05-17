@@ -1,3 +1,5 @@
+const slugify = require("slugify");
+
 const Category = require("../models/categoryModel");
 const Product = require("../models/productModel");
 
@@ -42,8 +44,10 @@ const categoryCtrl = {
       const category = await Category.findOne({name});
       if (category)
         return res.status(400).json({msg: "This Category Already Created."});
+      const slug = slugify(name, {lower: true, trim: true});
       const newCategory = new Category({
         name: name.toLowerCase(),
+        slug,
         image,
         parentId,
         createdBy,

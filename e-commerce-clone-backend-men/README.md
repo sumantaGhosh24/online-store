@@ -24,6 +24,6 @@ To run this project, you will need to add the following environment variables to
 
 ## Tech Stack
 
-**Technology & NPM Package:** Node, Express, Cloudinary, Nodemailer
+**Technology & NPM Package:** Node, Express, Cloudinary, Nodemailer, JWT
 
 **Database:** Mongodb

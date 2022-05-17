@@ -2,21 +2,6 @@ const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    username: {
-      type: String,
-      required: true,
-      trim: true,
-    },
     email: {
       type: String,
       required: true,
@@ -25,28 +10,19 @@ const userSchema = new mongoose.Schema(
     mobileNumber: {
       type: String,
       required: true,
-      unique: true,
+      trim: true,
     },
     password: {
       type: String,
       required: true,
     },
-    image: {
-      type: Object,
-      default:
-        "https://res.cloudinary.com/dzqgzsnoc/image/upload/v1648527265/fakeapi/vcu0dunmmyxjrdqjuxvy.jpg",
-    },
-    dob: {
-      type: String,
-      required: true,
-    },
-    gender: {
-      type: String,
-      required: true,
+    userData: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "UserData",
     },
     address: {
-      type: Object,
-      required: true,
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "UserAddress",
     },
     cart: {
       type: Array,
@@ -58,6 +34,10 @@ const userSchema = new mongoose.Schema(
       default: "active",
     },
     role: {
+      type: Number,
+      default: 0,
+    },
+    root: {
       type: Number,
       default: 0,
     },
