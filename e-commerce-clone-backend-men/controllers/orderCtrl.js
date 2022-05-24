@@ -3,6 +3,7 @@ const Product = require("../models/productModel");
 const User = require("../models/userModel");
 
 const orderCtrl = {
+  // get orders
   getOrders: async (req, res) => {
     try {
       const orders = await Order.find()
@@ -13,6 +14,7 @@ const orderCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // get order
   getOrder: async (req, res) => {
     try {
       const order = await Order.findById(req.params.id)
@@ -25,6 +27,7 @@ const orderCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // create order
   createOrder: async (req, res) => {
     try {
       const {
@@ -78,6 +81,7 @@ const orderCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // update order
   updateOrder: async (req, res) => {
     try {
       const {orderStatus, isPaid, isDeliverd} = req.body;
@@ -94,6 +98,7 @@ const orderCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // delete order
   deleteOrder: async (req, res) => {
     try {
       await Order.findByIdAndDelete(req.params.id);
@@ -102,6 +107,7 @@ const orderCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // get user order
   getUserOrder: async (req, res) => {
     try {
       const order = await Order.find({user: req.user.id})

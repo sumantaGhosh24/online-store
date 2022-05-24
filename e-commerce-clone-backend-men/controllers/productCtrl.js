@@ -3,6 +3,7 @@ const Product = require("../models/productModel");
 const Review = require("../models/reviewModel");
 
 const productCtrl = {
+  // get all products
   getProducts: async (req, res) => {
     try {
       const features = new APIFeatures(
@@ -27,6 +28,7 @@ const productCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // get product
   getProduct: async (req, res) => {
     try {
       const product = await Product.findById(req.params.id).populate(
@@ -42,6 +44,7 @@ const productCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // create product
   createProduct: async (req, res) => {
     try {
       const {
@@ -81,6 +84,7 @@ const productCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // update product
   updateProduct: async (req, res) => {
     try {
       const {
@@ -114,6 +118,7 @@ const productCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // delete product
   deleteProduct: async (req, res) => {
     try {
       const product = await Product.findByIdAndDelete(req.params.id);
@@ -124,6 +129,7 @@ const productCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // add image
   addImage: async (req, res) => {
     try {
       const product = await Product.findById(req.params.id);

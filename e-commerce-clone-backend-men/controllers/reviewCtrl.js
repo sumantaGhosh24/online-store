@@ -1,6 +1,8 @@
 const Review = require("../models/reviewModel");
+const Product = require("../models/productModel");
 
 const reviewCtrl = {
+  // get product reviews
   getReviews: async (req, res) => {
     try {
       const reviews = await Review.find({product: req.params.product}).populate(
@@ -15,6 +17,7 @@ const reviewCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // get review
   getReview: async (req, res) => {
     try {
       const review = await Review.findById(req.params.id).populate(
@@ -28,6 +31,7 @@ const reviewCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // create review
   createReview: async (req, res) => {
     try {
       const {comment, rating} = req.body;
@@ -54,6 +58,7 @@ const reviewCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // update review
   updateReview: async (req, res) => {
     try {
       const {comment, rating} = req.body;
@@ -69,6 +74,7 @@ const reviewCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // delete review
   deleteReview: async (req, res) => {
     try {
       const review = await Review.findByIdAndDelete(req.params.id);

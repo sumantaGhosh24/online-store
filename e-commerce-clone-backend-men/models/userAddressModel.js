@@ -4,32 +4,31 @@ const userAddressSchema = new mongoose.Schema(
   {
     city: {
       type: String,
-      require: true,
       trim: true,
     },
     state: {
       type: String,
-      require: true,
       trim: true,
     },
     country: {
       type: String,
-      require: true,
       trim: true,
     },
     zip: {
       type: Number,
-      require: true,
       trim: true,
     },
     addressline1: {
       type: String,
-      require: true,
       trim: true,
     },
     addressline2: {
       type: String,
       trim: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
   },
   {timestamps: true}

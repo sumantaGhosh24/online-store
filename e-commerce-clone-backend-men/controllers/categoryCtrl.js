@@ -3,7 +3,8 @@ const slugify = require("slugify");
 const Category = require("../models/categoryModel");
 const Product = require("../models/productModel");
 
-function createCategories(categories, parentId = null) {
+// structure categories function
+function structureCategories(categories, parentId = null) {
   const categoryList = [];
   let category;
   if (parentId == null) {
@@ -18,25 +19,27 @@ function createCategories(categories, parentId = null) {
       parentId: cat.parentId,
       image: cat.image,
       createdBy: cat.createdBy,
-      children: createCategories(categories, cat._id),
+      children: structureCategories(categories, cat._id),
     });
   }
   return categoryList;
 }
 
 const categoryCtrl = {
+  // get categories
   getCategories: async (req, res) => {
     try {
       const categories = await Category.find().populate(
         "createdBy",
         "_id username email mobileNumber image"
       );
-      const categoryList = createCategories(categories);
+      const categoryList = structureCategories(categories);
       res.json({categoryList});
     } catch (error) {
       return res.status(500).json({msg: error.message});
     }
   },
+  // create category
   createCategory: async (req, res) => {
     try {
       const {name, image, parentId} = req.body;
@@ -58,6 +61,7 @@ const categoryCtrl = {
       return res.status(500).json({msg: error.message});
     }
   },
+  // delete category
   deleteCategory: async (req, res) => {
     try {
       const products = await Product.findOne({category: req.params.id});
@@ -76,6 +80,7 @@ const categoryCtrl = {
       return res.status(500).json({msg: err.message});
     }
   },
+  // update category
   updateCategory: async (req, res) => {
     try {
       const {name, image, parentId} = req.body;

@@ -4,17 +4,14 @@ const userDataSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      require: true,
       trim: true,
     },
     lastName: {
       type: String,
-      require: true,
       trim: true,
     },
     username: {
       type: String,
-      required: true,
       trim: true,
     },
     image: {
@@ -24,16 +21,26 @@ const userDataSchema = new mongoose.Schema(
     },
     dob: {
       type: String,
-      required: true,
     },
     gender: {
       type: String,
-      required: true,
+    },
+    twoStepVerification: {
+      type: Number,
+      default: 0,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
     },
   },
   {timestamps: true}
 );
 
+userDataSchema.index({username: "text", firstName: "text", lastName: "text"});
+
 const UserData = mongoose.model("UserData", userDataSchema);
+
+UserData.createIndexes({username: "text", firstName: "text", lastName: "text"});
 
 module.exports = UserData;

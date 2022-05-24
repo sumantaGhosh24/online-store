@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use(fileUpload({useTempFiles: true}));
 
 // database connection
-mongoose.connect(process.env.MONGODB_URL, {autoIndex: false}, (err) => {
+mongoose.connect(process.env.MONGODB_URL, (err) => {
   if (err) throw err;
   console.log("Database Connection Successful.");
 });

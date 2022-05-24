@@ -31,7 +31,7 @@ const userSchema = new mongoose.Schema(
     },
     status: {
       type: String,
-      default: "active",
+      default: "inactive",
     },
     role: {
       type: Number,
@@ -45,10 +45,10 @@ const userSchema = new mongoose.Schema(
   {timestamp: true}
 );
 
-userSchema.index({firstName: "text", lastName: "text", username: "text"});
+userSchema.index({email: "text", mobileNumber: "text"});
 
 const User = mongoose.model("User", userSchema);
 
-User.createIndexes({firstName: "text", lastName: "text", username: "text"});
+User.createIndexes({email: "text", mobileNumber: "text"});
 
 module.exports = User;

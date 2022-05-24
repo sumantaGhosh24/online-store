@@ -5,30 +5,61 @@ const auth = require("../middleware/auth");
 const authAdmin = require("../middleware/authAdmin");
 const checkValidUserOrAdmin = require("../middleware/checkValidUserOrAdmin");
 
-router.get("/users", auth, authAdmin, userCtrl.getUsers);
-
-router.get("/user/:id", auth, checkValidUserOrAdmin, userCtrl.getUser);
-
-router.put("/user/:id", auth, checkValidUserOrAdmin, userCtrl.updateUser);
-
-router.delete("/user/:id", auth, checkValidUserOrAdmin, userCtrl.deleteUser);
-
+// register user
 router.post("/register", userCtrl.register);
 
-// register verification route
+// add user data
+router.post("/user-data", userCtrl.userData);
 
+// add user address
+router.post("/user-address", userCtrl.userAddress);
+
+// login user
 router.post("/login", userCtrl.login);
 
-// login two step authentication route
+// login verify
+router.post("/login-verify", userCtrl.loginVerify);
 
+// forgot password
+router.post("/forgot-password", userCtrl.forgotPassword);
+
+// confirm forgot password
+router.post("/confirm-forgot-password", userCtrl.confirmForgotPassword);
+
+// reset password
+router.post("/reset-password", checkValidUserOrAdmin, userCtrl.resetPassword);
+
+// verify register
+router.get("/register-verify", userCtrl.registerVerify);
+
+// get all users
+router.get("/users", auth, authAdmin, userCtrl.getUsers);
+
+// get user
+router.get("/user/:id", auth, checkValidUserOrAdmin, userCtrl.getUser);
+
+// logout user
 router.get("/logout", userCtrl.logout);
 
+// get refresh token
 router.get("/refresh_token", userCtrl.refresh_token);
 
-// reset password route
-
+// get cart
 router.get("/getcart", auth, userCtrl.getCart);
 
+// update user
+router.put("/user/:id", auth, checkValidUserOrAdmin, userCtrl.updateUser);
+
+// update user data
+router.put("/user-data/:id", checkValidUserOrAdmin, userCtrl.userDataUpdate);
+
+// update user address
+router.put("/user-data/:id", checkValidUserOrAdmin, userCtrl.userAddressUpdate);
+
+// add to cart
 router.patch("/addcart", auth, userCtrl.addCart);
+
+// delete user
+router.delete("/user/:id", auth, checkValidUserOrAdmin, userCtrl.deleteUser);
 
 module.exports = router;

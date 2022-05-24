@@ -29,7 +29,7 @@ A advanced, modern, responsive, animated e-commerce-website using various techno
 
 **Client:** React, Redux
 
-**Server:** Node, Express
+**Server:** Node, Express, Cloudinary
 
 **Database:** MongoDb
 
