@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
@@ -51,4 +51,4 @@ const User = mongoose.model("User", userSchema);
 
 User.createIndexes({email: "text", mobileNumber: "text"});
 
-module.exports = User;
+export default User;

@@ -1,8 +1,9 @@
-const router = require("express").Router();
+import express from "express";
 
-const orderCtrl = require("../controllers/orderCtrl");
-const auth = require("../middleware/auth");
-const checkValidUserOrAdmin = require("../middleware/checkValidUserOrAdmin");
+import {orderCtrl} from "../controllers/index.js";
+import {auth, checkValidUserOrAdmin} from "../middleware/index.js";
+
+const router = express.Router();
 
 // get orders
 router.get("/orders", auth, checkValidUserOrAdmin, orderCtrl.getOrders);
@@ -20,4 +21,4 @@ router
 // get user order
 router.get("/order", auth, checkValidUserOrAdmin, orderCtrl.getUserOrder);
 
-module.exports = router;
+export default router;

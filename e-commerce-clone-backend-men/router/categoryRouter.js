@@ -1,8 +1,9 @@
-const router = require("express").Router();
+import express from "express";
 
-const categoryCtrl = require("../controllers/categoryCtrl");
-const auth = require("../middleware/auth");
-const authAdmin = require("../middleware/authAdmin");
+import {categoryCtrl} from "../controllers/index.js";
+import {auth, authAdmin} from "../middleware/index.js";
+
+const router = express.Router();
 
 // get categories & create category
 router
@@ -16,4 +17,4 @@ router
   .delete(auth, authAdmin, categoryCtrl.deleteCategory)
   .put(auth, authAdmin, categoryCtrl.updateCategory);
 
-module.exports = router;
+export default router;

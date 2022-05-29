@@ -1,6 +1,5 @@
-const {APIFeatures} = require("../lib/features");
-const Product = require("../models/productModel");
-const Review = require("../models/reviewModel");
+import {APIFeatures} from "../lib/features.js";
+import {Product, Review} from "../models/index.js";
 
 const productCtrl = {
   // get all products
@@ -148,4 +147,4 @@ const productCtrl = {
   },
 };
 
-module.exports = productCtrl;
+export default productCtrl;

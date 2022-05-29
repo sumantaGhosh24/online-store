@@ -1,4 +1,4 @@
-const Order = require("../models/orderModel");
+import {Order} from "../models/index.js";
 
 const paymentCtrl = {
   test: async (req, res) => {
@@ -9,4 +9,4 @@ const paymentCtrl = {
   },
 };
 
-module.exports = paymentCtrl;
+export default paymentCtrl;

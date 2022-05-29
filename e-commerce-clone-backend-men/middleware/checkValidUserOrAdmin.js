@@ -1,4 +1,4 @@
-const User = require("../models/userModel");
+import {User} from "../models/index.js";
 
 const checkValidUserOrAdmin = async (req, res, next) => {
   try {
@@ -6,15 +6,13 @@ const checkValidUserOrAdmin = async (req, res, next) => {
     if (String(user._id) === req.params.id || user.role === 1) {
       next();
     } else {
-      return res
-        .status(400)
-        .json({
-          msg: "Only owner of this resource and admin can access this resource.",
-        });
+      return res.status(400).json({
+        msg: "Only owner of this resource and admin can access this resource.",
+      });
     }
   } catch (error) {
     return res.status(500).json({msg: error.message});
   }
 };
 
-module.exports = checkValidUserOrAdmin;
+export default checkValidUserOrAdmin;

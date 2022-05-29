@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "this is amazon clone backend using mern stack",
   "main": "server.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon server.js",
     "clear": "rm -rf tmp"

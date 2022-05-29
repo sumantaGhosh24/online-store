@@ -1,4 +1,4 @@
-const User = require("../models/userModel");
+import {User} from "../models/index.js";
 
 const authAdmin = async (req, res, next) => {
   try {
@@ -13,4 +13,4 @@ const authAdmin = async (req, res, next) => {
   }
 };
 
-module.exports = authAdmin;
+export default authAdmin;

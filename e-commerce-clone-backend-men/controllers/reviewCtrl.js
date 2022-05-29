@@ -1,5 +1,4 @@
-const Review = require("../models/reviewModel");
-const Product = require("../models/productModel");
+import {Review, Product} from "../models/index.js";
 
 const reviewCtrl = {
   // get product reviews
@@ -87,4 +86,4 @@ const reviewCtrl = {
   },
 };
 
-module.exports = reviewCtrl;
+export default reviewCtrl;

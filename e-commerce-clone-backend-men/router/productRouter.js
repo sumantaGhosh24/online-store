@@ -1,8 +1,9 @@
-const router = require("express").Router();
+import express from "express";
 
-const productCtrl = require("../controllers/productCtrl");
-const auth = require("../middleware/auth");
-const authAdmin = require("../middleware/authAdmin");
+import {productCtrl} from "../controllers/index.js";
+import {auth, authAdmin} from "../middleware/index.js";
+
+const router = express.Router();
 
 // get all products
 router.get("/products", productCtrl.getProducts);
@@ -18,4 +19,4 @@ router
   .delete(auth, authAdmin, productCtrl.deleteProduct)
   .patch(auth, authAdmin, productCtrl.addImage);
 
-module.exports = router;
+export default router;

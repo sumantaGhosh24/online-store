@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema(
   {
@@ -71,4 +71,4 @@ Product.createIndexes({
   price: "text",
 });
 
-module.exports = Product;
+export default Product;

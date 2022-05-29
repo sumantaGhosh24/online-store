@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const userDataSchema = new mongoose.Schema(
   {
@@ -43,4 +43,4 @@ const UserData = mongoose.model("UserData", userDataSchema);
 
 UserData.createIndexes({username: "text", firstName: "text", lastName: "text"});
 
-module.exports = UserData;
+export default UserData;

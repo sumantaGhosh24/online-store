@@ -1,5 +1,5 @@
-const cloudinary = require("cloudinary");
-const fs = require("fs");
+import cloudinary from "cloudinary";
+import fs from "fs";
 
 cloudinary.config({
   cloud_name: process.env.CLOUD_NAME,
@@ -102,4 +102,4 @@ const removeTmp = (path) => {
   });
 };
 
-module.exports = uploadCtrl;
+export default uploadCtrl;

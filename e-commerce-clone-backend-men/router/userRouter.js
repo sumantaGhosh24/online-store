@@ -1,9 +1,9 @@
-const router = require("express").Router();
+import express from "express";
 
-const userCtrl = require("../controllers/userCtrl");
-const auth = require("../middleware/auth");
-const authAdmin = require("../middleware/authAdmin");
-const checkValidUserOrAdmin = require("../middleware/checkValidUserOrAdmin");
+import {userCtrl} from "../controllers/index.js";
+import {auth, authAdmin, checkValidUserOrAdmin} from "../middleware/index.js";
+
+const router = express.Router();
 
 // register user
 router.post("/register", userCtrl.register);
@@ -62,4 +62,4 @@ router.patch("/addcart", auth, userCtrl.addCart);
 // delete user
 router.delete("/user/:id", auth, checkValidUserOrAdmin, userCtrl.deleteUser);
 
-module.exports = router;
+export default router;

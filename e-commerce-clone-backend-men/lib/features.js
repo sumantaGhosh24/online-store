@@ -1,4 +1,4 @@
-function APIFeatures(query, queryString) {
+export function APIFeatures(query, queryString) {
   this.query = query;
   this.queryString = queryString;
 
@@ -41,5 +41,3 @@ function APIFeatures(query, queryString) {
     return this;
   };
 }
-
-module.exports = {APIFeatures};

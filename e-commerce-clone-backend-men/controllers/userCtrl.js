@@ -1,11 +1,9 @@
-const bcrypt = require("bcrypt");
-const jwt = require("jsonwebtoken");
-const nodemailer = require("nodemailer");
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
+import nodemailer from "nodemailer";
 
-const User = require("../models/userModel");
-const UserData = require("../models/userDataModel");
-const UserAddress = require("../models/userAddressModel");
-const {APIFeatures} = require("../lib/features");
+import {APIFeatures} from "../lib/features.js";
+import {User, UserData, UserAddress} from "../models/index.js";
 
 const userCtrl = {
   // register user
@@ -367,4 +365,4 @@ const createRefreshToken = (user) => {
   return jwt.sign(user, process.env.REFRESH_TOKEN_SECRET, {expiresIn: "7d"});
 };
 
-module.exports = userCtrl;
+export default userCtrl;

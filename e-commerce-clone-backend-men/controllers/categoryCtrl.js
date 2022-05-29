@@ -1,7 +1,6 @@
-const slugify = require("slugify");
+import slugify from "slugify";
 
-const Category = require("../models/categoryModel");
-const Product = require("../models/productModel");
+import {Category, Product} from "../models/index.js";
 
 // structure categories function
 function structureCategories(categories, parentId = null) {
@@ -100,4 +99,4 @@ const categoryCtrl = {
   },
 };
 
-module.exports = categoryCtrl;
+export default categoryCtrl;

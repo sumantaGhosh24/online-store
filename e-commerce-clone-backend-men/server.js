@@ -1,13 +1,23 @@
-require("dotenv").config();
+import dotenv from "dotenv";
 
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const morgan = require("morgan");
-const fileUpload = require("express-fileupload");
-const cookieParser = require("cookie-parser");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import morgan from "morgan";
+import fileUpload from "express-fileupload";
+import cookieParser from "cookie-parser";
 
-const routes = require("./routes");
+import {
+  categoryRouter,
+  orderRouter,
+  paymentRouter,
+  productRouter,
+  reviewRouter,
+  uploadRouter,
+  userRouter,
+} from "./router/index.js";
+
+dotenv.config();
 
 // declare variable
 const app = express();
@@ -28,7 +38,13 @@ mongoose.connect(process.env.MONGODB_URL, (err) => {
 });
 
 // setup routes
-app.use("/api", routes);
+app.use("/api", categoryRouter);
+app.use("/api", orderRouter);
+app.use("/api", paymentRouter);
+app.use("/api", productRouter);
+app.use("/api", reviewRouter);
+app.use("/api", uploadRouter);
+app.use("/api", userRouter);
 
 // setup server
 app.listen(PORT, () => {

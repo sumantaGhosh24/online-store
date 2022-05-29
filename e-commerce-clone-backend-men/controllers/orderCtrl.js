@@ -1,6 +1,4 @@
-const Order = require("../models/orderModel");
-const Product = require("../models/productModel");
-const User = require("../models/userModel");
+import {User, Order, Product} from "../models/index.js";
 
 const orderCtrl = {
   // get orders
@@ -122,4 +120,4 @@ const orderCtrl = {
   },
 };
 
-module.exports = orderCtrl;
+export default orderCtrl;

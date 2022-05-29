@@ -1,8 +1,9 @@
-const router = require("express").Router();
+import express from "express";
 
-const reviewCtrl = require("../controllers/reviewCtrl");
-const auth = require("../middleware/auth");
-const checkValidUserOrAdmin = require("../middleware/checkValidUserOrAdmin");
+import {reviewCtrl} from "../controllers/index.js";
+import {auth, checkValidUserOrAdmin} from "../middleware/index.js";
+
+const router = express.Router();
 
 // get product reviews
 router.get("/reviews/:product", reviewCtrl.getReviews);
@@ -24,4 +25,4 @@ router.delete(
   reviewCtrl.deleteReview
 );
 
-module.exports = router;
+export default router;
